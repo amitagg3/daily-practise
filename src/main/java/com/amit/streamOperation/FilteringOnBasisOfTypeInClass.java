@@ -1,4 +1,6 @@
-package com.amit.javaPractise;
+package com.amit.streamOperation;
+
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,7 @@ public class FilteringOnBasisOfTypeInClass {
     }
 }
 
+@Getter
 class Animal {
     String name;
 
@@ -54,15 +57,4 @@ class Animal {
         this.color = color;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getType() {
-        return type;
-    }
 }

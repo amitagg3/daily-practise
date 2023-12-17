@@ -1,7 +1,8 @@
 package com.amit.javaPractise;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /*
 Find maximum repeated number in an array using one for loop
@@ -14,7 +15,7 @@ public class MaximumRepeatedNumber {
         int maxNum = 0;
         int maxTemp;
         //To convert int[] array to Integer List
-        List<Integer> list = Arrays.stream(a).boxed().collect(Collectors.toList());
+        List<Integer> list = Arrays.stream(a).boxed().toList();
         for (Integer i : list) {
             maxTemp = Collections.frequency(list, i);
             if (max <= maxTemp) {
