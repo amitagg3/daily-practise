@@ -21,14 +21,30 @@ Explanation: At time 40 there were all 7 guests present in the party.
  */
 public class MaximumIntervalsOverlap {
     public static void main(String[] args) {
-        int N=5;
-        int[] entry= {1, 2,10, 5, 5};
+        int N = 5;
+        int[] entry = {1, 2, 10, 5, 5};
         int[] exit = {4, 5, 12, 9, 12};
-        System.out.println(Arrays.toString(findMaxGuests(entry, exit, N)));
+        System.out.println((Arrays.toString(findMaxGuests(entry, exit, N))));
     }
 
-    public static  int[] findMaxGuests(int[] Entry,int Exit[], int N){
-        // add code here.
-        return Entry;
+    public static int[] findMaxGuests(int[] Entry, int[] Exit, int N) {
+        Arrays.sort(Entry);
+        Arrays.sort(Exit);
+        int ansTime = 0, mxCount = 0, count = 0;
+        int i = 0, j = 0;
+        while (i < N && j < N) {
+            if (Entry[i] <= Exit[j]) {
+                count++;
+                if (count > mxCount) {
+                    mxCount = count;
+                    ansTime = Entry[i];
+                }
+                i++;
+            } else {
+                count--;
+                j++;
+            }
+        }
+        return new int[]{mxCount, ansTime};
     }
 }
