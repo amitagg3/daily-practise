@@ -1,7 +1,7 @@
 package com.amit.javaPractise;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
+
 /*
 Leetcode-189 : Rotate Array
 
@@ -25,20 +25,25 @@ rotate 2 steps to the right: [3,99,-1,-100]
 public class RotateArray {
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5, 6, 7};
-        int k = 3;
+        int k = 7;
         rotate(nums, k);
         System.out.println(Arrays.toString(nums));
     }
 
     public static void rotate(int[] nums, int k) {
-        int j = 1;
-        int len = nums.length;
-        int temp;
-        while (j <= k) {
-            temp = nums[len - 1];
-            IntStream.iterate(len - 1, i -> i > 0, i -> i - 1).forEach(i -> nums[i] = nums[i - 1]);
-            nums[0] = temp;
-            j++;
+        k %= nums.length;
+        reverseArray(nums, 0, nums.length - 1);
+        reverseArray(nums, k, nums.length - 1);
+        reverseArray(nums, 0, k - 1);
+    }
+
+    public static void reverseArray(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
         }
     }
 }
